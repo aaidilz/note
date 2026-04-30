@@ -5,14 +5,14 @@ tags:
   - notes
 ---
 
-# 📚 Catatan Pribadi
+# 📚 Catatan Utama
 
-Selamat datang di kumpulan catatan. Halaman ini berfungsi sebagai pusat navigasi untuk semua topik yang sedang dipelajari dan dikembangkan.
+Selamat datang di pusat catatan. Halaman ini menavigasi semua topik utama di dalam folder `content` dengan ringkasan kategori dan link cepat.
 
----
-## Daftar Isi
-- [General](General/)
-- [Development](Development/)
----
+## Folder
+- [Cyber Security](cyber-security/index.md)
+- [Development](Development/index.md)
+- [General](General/index.md)
+- [Template](Template/index.md)
 
-> Gunakan halaman ini sebagai pintu masuk. Update secara berkala sesuai perkembangan belajar dan proyek.
+> Perbarui daftar ini saat topik baru ditambahkan atau saat struktur folder berkembang.
