@@ -10,9 +10,11 @@ tags:
 # General
 
 ## Ringkasan
+
 Catatan umum untuk topik seperti jaringan, proxy, dan konfigurasi sistem yang tidak termasuk kategori khusus lain.
 
 ## Isi
+
 - [Proxy dan Reverse Proxy (Konsep, Implementasi, dan Best Practice)](proxy-dan-reverse-proxy.md)
 - [Waydroid Networking](waydroid-networking.md)
 

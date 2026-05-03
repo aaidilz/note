@@ -11,12 +11,14 @@ tags:
 ## Gambaran
 
 Prompt yang baik bukan sekadar “perintah”, tapi struktur yang jelas tentang:
+
 - tujuan
 - konteks
 - batasan
 - output yang diharapkan
 
 Kalau prompt tidak terstruktur, hasilnya sering:
+
 - terlalu umum
 - tidak konsisten
 - atau melenceng dari kebutuhan
@@ -29,12 +31,12 @@ Framework ini dibuat supaya reusable dan bisa dipakai untuk berbagai kasus: codi
 
 Gunakan urutan ini:
 
-1. Objective  
-2. Context  
-3. Constraints  
-4. Input (optional)  
-5. Expected Output  
-6. Additional Instructions (optional)  
+1. Objective
+2. Context
+3. Constraints
+4. Input (optional)
+5. Expected Output
+6. Additional Instructions (optional)
 
 ---
 
@@ -71,7 +73,7 @@ Instruksi tambahan jika ada:
 - edge case
 - preferensi tertentu
 - hal yang harus dihindari
-````
+```
 
 ---
 
@@ -192,9 +194,9 @@ Buatkan aplikasi yang bagus dan keren
 
 Masalahnya:
 
-* tidak ada konteks
-* tidak ada batasan
-* tidak jelas outputnya
+- tidak ada konteks
+- tidak ada batasan
+- tidak jelas outputnya
 
 Hasilnya pasti random.
 
@@ -209,9 +211,9 @@ prompt-nya yang ambigu.
 
 Framework ini bukan soal bikin prompt panjang, tapi bikin prompt yang:
 
-* eksplisit
-* terarah
-* bisa direproduksi
+- eksplisit
+- terarah
+- bisa direproduksi
 
 ---
 

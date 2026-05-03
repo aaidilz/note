@@ -22,23 +22,27 @@ Sementara reverse proxy adalah kebalikannya. Ia berada di sisi server dan meneri
 Forward proxy digunakan oleh client untuk mengakses internet melalui perantara.
 
 ### Cara Kerja
+
 ```mermaid
 graph LR
     Client --> Proxy --> Internet
 ```
 
 Proxy akan:
+
 - Meneruskan request ke server tujuan
 - Menerima response
 - Mengembalikannya ke client
 
 ### Fungsi Umum
+
 - Menyembunyikan IP client (anonymity)
 - Filtering konten (misalnya di kantor/sekolah)
 - Caching untuk efisiensi bandwidth
 - Bypass restriction (tergantung konfigurasi)
 
 ### Contoh Use Case
+
 - Jaringan kantor yang membatasi akses website tertentu
 - User menggunakan proxy untuk menyembunyikan identitas
 
@@ -49,18 +53,21 @@ Proxy akan:
 Reverse proxy berada di depan server (backend) dan menangani request dari client.
 
 ### Cara Kerja
+
 ```mermaid
 graph LR
     Client --> ReverseProxy --> BackendServer
 ```
 
 Reverse proxy akan:
+
 - Menerima request dari client
 - Menentukan backend mana yang harus menangani
 - Mengirim request ke backend
 - Mengembalikan response ke client
 
 ### Fungsi Utama
+
 - Load balancing
 - SSL termination
 - Caching
@@ -68,6 +75,7 @@ Reverse proxy akan:
 - Menyembunyikan struktur backend
 
 ### Contoh Use Case
+
 - Website besar dengan banyak server backend
 - API gateway
 - Deployment microservices
@@ -76,18 +84,19 @@ Reverse proxy akan:
 
 ## Perbedaan Utama
 
-| Aspek            | Forward Proxy           | Reverse Proxy            |
-|------------------|------------------------|--------------------------|
-| Posisi           | Dekat client           | Dekat server             |
-| Tujuan           | Melindungi client      | Melindungi server        |
-| Visibility       | Server tahu proxy      | Client tidak tahu backend|
-| Use case         | Filtering, anonymity   | Load balancing, security |
+| Aspek      | Forward Proxy        | Reverse Proxy             |
+| ---------- | -------------------- | ------------------------- |
+| Posisi     | Dekat client         | Dekat server              |
+| Tujuan     | Melindungi client    | Melindungi server         |
+| Visibility | Server tahu proxy    | Client tidak tahu backend |
+| Use case   | Filtering, anonymity | Load balancing, security  |
 
 ---
 
 ## Implementasi di Ubuntu
 
 Biasanya digunakan:
+
 - Nginx (reverse proxy)
 - Squid (forward proxy)
 
@@ -100,7 +109,7 @@ Biasanya digunakan:
 ```bash
 sudo apt update
 sudo apt install nginx -y
-````
+```
 
 ### Konfigurasi Reverse Proxy
 

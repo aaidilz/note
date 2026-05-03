@@ -6,6 +6,7 @@ tags:
   - ubuntu
   - development
   - mobile
+  - setup
 ---
 
 ## Gambaran
@@ -14,11 +15,11 @@ Setup ini fokus ke environment CLI tanpa Android Studio. Cocok kalau kamu ingin 
 
 Alur yang dipakai:
 
-1. Install Flutter via snap  
-2. Install Android Command Line Tools manual  
-3. Install SDK components via sdkmanager  
-4. Set environment variables  
-5. Verifikasi dengan flutter doctor  
+1. Install Flutter via snap
+2. Install Android Command Line Tools manual
+3. Install SDK components via sdkmanager
+4. Set environment variables
+5. Verifikasi dengan flutter doctor
 
 ---
 
@@ -26,7 +27,7 @@ Alur yang dipakai:
 
 ```bash
 sudo snap install flutter --classic
-````
+```
 
 Cek:
 
@@ -77,8 +78,8 @@ $HOME/Android/Sdk/cmdline-tools/latest/bin/sdkmanager
 
 Kalau tidak sesuai, error klasik yang muncul:
 
-* `cmdline-tools component is missing`
-* `Could not determine SDK root`
+- `cmdline-tools component is missing`
+- `Could not determine SDK root`
 
 ---
 

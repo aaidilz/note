@@ -9,9 +9,11 @@ tags:
 # Development
 
 ## Ringkasan
+
 Catatan tentang pengembangan perangkat lunak, setup tooling, dan praktik terbaik untuk workflow developer.
 
 ## Isi
+
 - [Install Flutter on Ubuntu Without Android Studio](install-flutter-ubuntu.md)
 
 > Simpan halaman ini untuk panduan setup dan referensi developer.

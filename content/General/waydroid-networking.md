@@ -18,6 +18,7 @@ Secara default, Waydroid berjalan menggunakan network bridge (biasanya `waydroid
 - IP Waydroid berbeda dari host
 
 Kalau networking tidak dikonfigurasi dengan benar, biasanya gejalanya:
+
 - Tidak bisa akses internet dari Waydroid
 - Tidak bisa diakses dari device lain
 - ADB over network tidak jalan
