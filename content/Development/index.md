@@ -14,6 +14,6 @@ Catatan tentang pengembangan perangkat lunak, setup tooling, dan praktik terbaik
 
 ## Isi
 
-- [Install Flutter on Ubuntu Without Android Studio](install-flutter-ubuntu.md)
+- [Install Flutter on Ubuntu Without Android Studio](install-flutter-ubuntu-no-android-studio.md)
 
 > Simpan halaman ini untuk panduan setup dan referensi developer.

@@ -14,7 +14,7 @@ Kumpulan catatan terkait keamanan siber, ancaman digital, analisis malware, dan 
 
 ## Isi
 
-- [ANY.RUN Registration Guide](anyrun-registration-guide.md)
+- [ANY.RUN Registration Guide](anyrun-registration.md)
 - [Pentest Tools](pentest-tools.md)
 
 > Gunakan folder ini sebagai referensi cepat untuk riset dan dokumentasi keamanan.
