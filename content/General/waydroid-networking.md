@@ -9,85 +9,80 @@ tags:
   - linux
 ---
 
-## Gambaran Masalah
+# Waydroid Network Fix Guide
 
-Secara default, Waydroid berjalan menggunakan network bridge (biasanya `waydroid0`) yang dibuat oleh container system (LXC). Android di dalam Waydroid tidak langsung “terlihat” ke jaringan luar karena:
+This document outlines the steps to resolve network connectivity issues in Waydroid by creating a NetworkManager-managed bridge.
 
-- NAT digunakan
-- Firewall Linux bisa memblokir trafik
-- IP Waydroid berbeda dari host
+## Problem Description
 
-Kalau networking tidak dikonfigurasi dengan benar, biasanya gejalanya:
+Waydroid often fails to establish a network connection because the `waydroid0` interface is either DOWN or lacks proper NAT/IP masquerading rules on the host. This results in the Android container having no internet access despite the host being connected.
 
-- Tidak bisa akses internet dari Waydroid
-- Tidak bisa diakses dari device lain
-- ADB over network tidak jalan
+## Solution: NetworkManager Bridge
 
----
+The most robust solution on systems using NetworkManager is to delegate the management of the `waydroid0` interface to NetworkManager. This automatically handles DHCP, DNS, and NAT (via the `shared` IPv4 method).
 
-## Cek Interface Waydroid
+### Steps to Apply Fix
 
-Pertama, pastikan interface muncul:
+1.  **Stop Waydroid (optional but recommended):**
 
-```bash
-ip a | grep waydroid
-```
+    ```bash
+    sudo waydroid container stop
+    ```
 
-Biasanya muncul seperti:
+2.  **Create the bridge connection:**
 
-```text
-waydroid0
-```
+    ```bash
+    sudo nmcli con add type bridge ifname waydroid0 con-name waydroid0 autoconnect yes
+    ```
 
-Kalau tidak ada, berarti service belum jalan:
+3.  **Configure IPv4 sharing:**
+    This step enables NAT and sets the host as a gateway.
 
-```bash
-sudo systemctl start waydroid-container
-```
+    ```bash
+    sudo nmcli con modify waydroid0 ipv4.method shared
+    ```
 
----
+4.  **Ignore IPv6 (prevents potential conflicts):**
 
-## Enable IP Forwarding
+    ```bash
+    sudo nmcli con modify waydroid0 ipv6.method ignore
+    ```
 
-Agar trafik bisa lewat dari Waydroid ke luar:
+5.  **Bring the connection up:**
 
-```bash
-sudo sysctl -w net.ipv4.ip_forward=1
-```
+    ```bash
+    sudo nmcli con up waydroid0
+    ```
 
-Supaya permanen:
+6.  **Restart Waydroid Container:**
+    ```bash
+    sudo systemctl restart waydroid-container
+    ```
 
-```bash
-sudo nano /etc/sysctl.conf
-```
+## Verification
 
-Tambahkan:
+### 1. Check Host Interface
 
-```conf
-net.ipv4.ip_forward=1
-```
-
-Apply:
+Ensure `waydroid0` has an IP address (usually `10.42.0.1`):
 
 ```bash
-sudo sysctl -p
+ip addr show waydroid0
 ```
 
----
+### 2. Check Container Connectivity
 
-## NAT dengan iptables
-
-Ini bagian penting supaya Waydroid bisa akses internet.
-
-Misal interface internet `wlan0` atau `eth0`:
+Ensure the Waydroid session is running (`waydroid session start` or similar) before testing:
 
 ```bash
-sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+# Test IP connectivity
+echo "ping -c 3 8.8.8.8" | sudo waydroid shell
+
+# Test DNS resolution
+echo "ping -c 3 google.com" | sudo waydroid shell
 ```
 
-Izinkan forwarding:
+## Troubleshooting
 
-```bash
-sudo iptables -A FORWARD -i waydroid0 -o wlan0 -j ACCEPT
-sudo iptables -A FORWARD -i wlan0 -o waydroid0 -m state --state RELATED,ESTABLISHED -j ACCEPT
-```
+- **Interface state DOWN:** If `waydroid0` shows `state DOWN` or `NO-CARRIER`, ensure the Waydroid container is actually running and has attempted to use the network.
+- **Shared method fails:** Ensure NetworkManager has the `dnsmasq` or equivalent internal DHCP provider active (this is usually default).
+- **Firewall:** Double check `ufw status`. If active, ensure the routes are allowed.
