@@ -1,7 +1,10 @@
 ---
 title: Ubuntu 26.04 Fresh Install Setup Guide
 draft: false
-tags: [ubuntu, setup, optimization, cli, linux]
+tags:
+  - linux
+  - setup
+  - configuration
 ---
 
 ## Update & Upgrade Repository
