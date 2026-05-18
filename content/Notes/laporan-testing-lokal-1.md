@@ -28,7 +28,7 @@ Tidak ditemukan indikasi eksploitasi aktif ataupun compromise selama pengujian b
 | Severity | High (CVSS: 8.6)                             |
 | -------- | -------------------------------------------- |
 | Status   | Open                                         |
-| Category | A05:2021-Security Misconfiguration           |
+| Category | A02:2025-Security Misconfiguration           |
 | Vector   | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H |
 
 ### Description
@@ -100,7 +100,7 @@ Endpoint merespons valid XML response dan menampilkan method yang Kritikal
 | Severity | 5.3 (Medium)                                 |
 | -------- | -------------------------------------------- |
 | Status   | Open                                         |
-| Category | A01:2021-Broken Access Control               |
+| Category | A01:2025-Broken Access Control               |
 | Vector   | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N |
 
 ### Description
