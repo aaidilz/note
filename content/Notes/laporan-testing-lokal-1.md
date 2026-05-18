@@ -16,6 +16,7 @@ Tidak ditemukan indikasi eksploitasi aktif ataupun compromise selama pengujian b
 # 2. Assets in Scope
 
 ## Domain
+
 1. defend.azharmtq.my.id
 
 ---
@@ -34,8 +35,8 @@ Tidak ditemukan indikasi eksploitasi aktif ataupun compromise selama pengujian b
 
 | Target  | https://defend.azharmtq.my.id/xmlrpc.php |
 | ------- | ---------------------------------------- |
-| Tanggal | 16 May 2026 |
-| Penguji | Null |
+| Tanggal | 16 May 2026                              |
+| Penguji | Null                                     |
 
 **Background**  
 xmlrpc.php adalah file inti (core) WordPress yang berfungsi sebagai jembatan komunikasi jarak jauh. Fitur ini memungkinkan aplikasi luar atau sistem lain (seperti aplikasi mobile WordPress atau layanan pingback) untuk bertukar data dan mengelola situs web Anda secara otomatis.
@@ -53,6 +54,7 @@ Selain itu metode `pingback.ping` berpotensi digunakan sebagai SSRF ataupun DDoS
 **Reproduction Steps**
 
 1. Mengirim request POST ke endpoint:
+
 ```http
    POST /xmlrpc.php HTTP/2
    Host: defend.azharmtq.my.id
@@ -89,7 +91,7 @@ Endpoint merespons valid XML response dan menampilkan method yang Kritikal
 | **system.multicall** | Vektor Enable Brute Force untuk 1 permintaan    |
 | **pingback.ping**    | Potensi vektor SSRF dan amplifikasi DDoS        |
 | **wp.uploadFile**    | Kemampuan upload file (membutuhkan autentikasi) |
-| **wp.***             | API manajemen penuh WordPress terekspos         |
+| **wp.\***            | API manajemen penuh WordPress terekspos         |
 
 ---
 
@@ -119,11 +121,11 @@ Endpoint `/wp-json/wp/v2/users` dapat diakses tanpa autentikasi dan mengungkap u
 
 Informasi ini dapat digunakan attacker untuk:
 
-* username enumeration
-* targeted password attack
-* credential stuffing
-* spear phishing
-* correlation terhadap akun lain
+- username enumeration
+- targeted password attack
+- credential stuffing
+- spear phishing
+- correlation terhadap akun lain
 
 **Reproduction Steps**
 
@@ -138,14 +140,13 @@ Informasi ini dapat digunakan attacker untuk:
 
    ```json
    [
-      {
-         "id":1,
-         "name":"kotatsu",
-         "slug":"kotatsu"
-      }
+     {
+       "id": 1,
+       "name": "kotatsu",
+       "slug": "kotatsu"
+     }
    ]
    ```
-
 
 Endpoint dapat diakses tanpa authentication dan menampilkan data user WordPress.
 
@@ -199,9 +200,9 @@ Hasil assessment menunjukkan bahwa target masih menggunakan konfigurasi WordPres
 
 # 5. Reference
 
-* [OWASP Top 10 2025](https://owasp.org/Top10/2025/)
-* [WordPress Hardening Documentation](https://developer.wordpress.org/advanced-administration/security/hardening/)
-* [CVSS v3.1 Specification](https://www.first.org/cvss/calculator/3.1) 
+- [OWASP Top 10 2025](https://owasp.org/Top10/2025/)
+- [WordPress Hardening Documentation](https://developer.wordpress.org/advanced-administration/security/hardening/)
+- [CVSS v3.1 Specification](https://www.first.org/cvss/calculator/3.1)
 
 ---
 

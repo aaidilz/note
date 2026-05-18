@@ -8,6 +8,7 @@ tags:
   - rsa
   - security
 ---
+
 # CTF Cryptography — RSA Small Private Exponent (Wiener's Attack)
 
 ## Challenge
@@ -16,11 +17,11 @@ An RSA encryption scheme uses an unusually small private exponent `d`. Recover t
 
 ## Files
 
-| File | Description |
-|------|-------------|
-| `encryption.py` | Challenge encryption script |
-| `message.txt` | RSA public parameters and ciphertext |
-| `solve.py` | Wiener's attack solver |
+| File            | Description                          |
+| --------------- | ------------------------------------ |
+| `encryption.py` | Challenge encryption script          |
+| `message.txt`   | RSA public parameters and ciphertext |
+| `solve.py`      | Wiener's attack solver               |
 
 ## Vulnerability
 
@@ -35,11 +36,11 @@ When `d < n^(1/4) / 3`, Wiener's attack recovers `d` from the continued fraction
 
 ### Parameters
 
-| Parameter | Bits | Expected | Status |
-|-----------|------|----------|--------|
-| `n` | ~2096 | ~2096 | Normal |
-| `d` | 256 | ~2096 | **Too small** |
-| `e` | ~2096 | ~2096 (or small) | Abnormally large |
+| Parameter | Bits  | Expected         | Status           |
+| --------- | ----- | ---------------- | ---------------- |
+| `n`       | ~2096 | ~2096            | Normal           |
+| `d`       | 256   | ~2096            | **Too small**    |
+| `e`       | ~2096 | ~2096 (or small) | Abnormally large |
 
 ## Solution
 
